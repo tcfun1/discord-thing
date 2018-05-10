@@ -4,5 +4,8 @@
   "description": "My own Discord bot",
   "main": "bot.js",
   "author": "tcfun",
+  "script": {
+    "start": "node bot.js"
+  },
   "dependencies": {}
 }
