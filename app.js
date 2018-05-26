@@ -9,7 +9,10 @@ const client = new Discord.Client();
 // - finishes logging in
 // - reconnects after disconnecting
 client.on('ready', () => {
-    console.log('Ready!');
+    if (message.content === '!ping') {
+    // send back "Pong." to the channel the message was sent in
+    message.channel.send('Pong.');
+}
 });
 
 // login to Discord with your app's token
