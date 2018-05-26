@@ -1,64 +1,16 @@
-const path = require('path');
-const webpack = require('webpack');
-const UglifyJSPlugin = require('uglifyjs-webpack-plugin');
-const version = require('./package.json').version;
+// require the discord.js module
+const Discord = require('discord.js');
 
-const plugins = [
-  new webpack.optimize.ModuleConcatenationPlugin(),
-];
+// create a new Discord client
+const client = new Discord.Client();
 
-const prod = process.env.NODE_ENV === 'production';
+// when the client is ready, run this code
+// this event will trigger whenever your bot:
+// - finishes logging in
+// - reconnects after disconnecting
+client.on('ready', () => {
+    console.log('Ready!');
+});
 
-if (prod) {
-  plugins.push(new UglifyJSPlugin({
-    uglifyOptions: {
-      mangle: { keep_classnames: true },
-      compress: { keep_classnames: true },
-      output: { comments: false },
-    },
-  }));
-}
-
-// eslint-disable-next-line max-len
-const filename = `discord${process.env.VERSIONED ? `.${version}` : ''}${prod ? '.min' : ''}.js`;
-
-module.exports = {
-  entry: './src/index.js',
-  mode: prod ? 'production' : 'development',
-  output: {
-    path: path.resolve('./webpack'),
-    filename,
-    library: 'Discord',
-    libraryTarget: 'umd',
-  },
-  module: {
-    rules: [
-      { test: /\.md$/, loader: 'ignore-loader' },
-      {
-        test: require.resolve('./package.json'),
-        type: 'javascript/auto',
-        use: {
-          loader: 'json-filter-loader',
-          options: {
-            used: ['version', 'homepage'],
-          },
-        },
-      },
-    ],
-  },
-  node: {
-    fs: 'empty',
-    dns: 'mock',
-    tls: 'mock',
-    child_process: 'empty',
-    dgram: 'empty',
-    __dirname: true,
-    process: false,
-    path: 'empty',
-    Buffer: false,
-    zlib: 'empty',
-  },
-  plugins,
-};
-
+// login to Discord with your app's token
 client.login('MrwHMF_ibVQK8lF2AnZtvszRBy5ohAXM');
