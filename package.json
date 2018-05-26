@@ -2,10 +2,10 @@
   "name": "THE-OOF",
   "version": "1.0.0",
   "description": "BIG OOF",
-  "main": "bot.js",
+  "main": "app.js",
   "author": "tcfun",
   "script": {
-    "start": "node bot.js"
+    "start": "node app.js"
   },
   "dependencies": {}
 }
