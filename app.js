@@ -10,5 +10,5 @@ client.on("message", (message) => {
     message.channel.send("pong!");
   }
 });
-// login to Discord with your app's token
-client.login('MrwHMF_ibVQK8lF2AnZtvszRBy5ohAXM');
+
+client.login("NDM4Mzc1NDgyNjgxOTgyOTg3.DexDKA.wqhthFemMvKPUfmdzQ0Urk3DYik");
